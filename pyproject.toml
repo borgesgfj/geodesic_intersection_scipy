@@ -1,0 +1,56 @@
+[tool.ruff]
+# Target Python version used in the venv
+target-version = "py310"
+
+# Maximum line length (88 matches Black's default)
+line-length = 88
+
+# Paths / patterns to ignore
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+    ".ruff_cache",
+]
+
+[tool.ruff.lint]
+# Rule sets to enable:
+#   E / W  – pycodestyle errors & warnings
+#   F      – Pyflakes (undefined names, unused imports, …)
+#   I      – isort (import sorting)
+#   N      – pep8-naming
+#   UP     – pyupgrade (modern Python syntax)
+#   B      – flake8-bugbear (common bugs & design issues)
+#   NPY    – NumPy-specific rules
+select = ["E", "W", "F", "I", "N", "UP", "B", "NPY"]
+
+# Rules to ignore project-wide
+ignore = [
+    "E501",   # line-too-long  (formatter handles this)
+    "B008",   # do-not-perform-function-call-in-default-argument
+    "N803",   # argument-name-should-be-lowercase  (common in scientific code)
+    "N806",   # variable-in-function-should-be-lowercase (e.g. M, G in GR)
+    "UP007",  # use `X | Y` instead of `Optional[X]` (compatibility)
+]
+
+# Allow unused variables whose name starts with "_"
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+_*))$"
+
+# Allow star imports inside __init__.py
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "F403"]
+
+[tool.ruff.lint.isort]
+known-first-party = []
+known-third-party = ["numpy", "scipy", "sympy", "matplotlib", "plotly", "ipywidgets"]
+force-sort-within-sections = true
+
+[tool.ruff.format]
+# Use double quotes (consistent with Black)
+quote-style = "double"
+# Indent with spaces
+indent-style = "space"
+# Trailing comma handling
+skip-magic-trailing-comma = false
+# Line endings
+line-ending = "auto"

@@ -1,0 +1,46 @@
+{
+  // ── Python interpreter ──────────────────────────────────────────────────
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+
+  // ── Format on Save ──────────────────────────────────────────────────────
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    // Run ruff's auto-fix + import-sort on every save
+    "source.fixAll.ruff": "explicit",
+    "source.organizeImports.ruff": "explicit"
+  },
+
+  // ── Default formatter for Python files ─────────────────────────────────
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+  },
+
+  // ── Notebook-specific settings ──────────────────────────────────────────
+  "[jupyter]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "notebook.formatOnSave.enabled": true,
+  "notebook.codeActionsOnSave": {
+    "notebook.source.fixAll.ruff": "explicit",
+    "notebook.source.organizeImports.ruff": "explicit"
+  },
+
+  // ── Ruff linter settings ────────────────────────────────────────────────
+  "ruff.enable": true,
+  "ruff.interpreter": ["${workspaceFolder}/.venv/bin/python"],
+  "ruff.configurationPreference": "filesystemFirst",
+
+  // ── Disable conflicting linters/formatters ──────────────────────────────
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": false,
+  "python.formatting.provider": "none",
+
+  // ── Editor quality-of-life ──────────────────────────────────────────────
+  "editor.rulers": [88],
+  "editor.renderWhitespace": "trailing",
+  "editor.trimAutoWhitespace": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
+}
